@@ -10,6 +10,16 @@ export default function Home() {
   const [posterTitle, setPosterTitle] = useState("Irresponsabilidade")
   const [posterCaption, setPosterCaption] = useState("Nenhuma gota d'água se sente responsável pela inundação")
 
+  const formatTitle = (title: string) => {
+    return (
+      <>
+        <span className="inline-block align-top text-2xl leading-7 uppercase">{title.substring(0, 1)}</span>
+        <span className="inline-block align-top underline underline-offset-2 uppercase">{title.substring(1, title.length - 1)}</span>
+        <span className="inline-block align-top text-2xl leading-7 uppercase">{title.substring(title.length - 1)}</span>
+      </>
+    )
+  }
+
   return (
     <div className="flex flex-col h-dvh">
       <main className="flex flex-col h-full items-center gap-2 dark:bg-gray-800">
@@ -22,13 +32,13 @@ export default function Home() {
             <div className="mb-2 block">
               <Label htmlFor="base" value="Title" />
             </div>
-            <TextInput id="base" type="text" sizing="md" value={posterTitle} onChange={(e)=>setPosterTitle(e.target.value)}/>
+            <TextInput id="base" type="text" sizing="md" value={posterTitle} onChange={(e) => setPosterTitle(e.target.value)} />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="caption" value="Caption" />
             </div>
-            <TextInput id="caption" type="text" sizing="md" value={posterCaption} onChange={(e)=>setPosterCaption(e.target.value)} />
+            <TextInput id="caption" type="text" sizing="md" value={posterCaption} onChange={(e) => setPosterCaption(e.target.value)} />
           </div>
           <div>
             <div>
@@ -41,7 +51,9 @@ export default function Home() {
 
         <div id="result" className="min-w-full h-full flex justify-center">
           <div className="flex flex-col w-[800px]  h-[600px] bg-black items-center">
-            <h1 className="mb-1 text-base font-semibold text-gray-900 dark:text-white">{posterTitle}</h1>
+            <h1 className="my-6 text-base font-semibold text-gray-900 dark:text-white">
+              {formatTitle(posterTitle)}
+            </h1>
             <Image src={imageFile} width={640} height={480} alt="image" />
             <p>{posterCaption}</p>
           </div>
