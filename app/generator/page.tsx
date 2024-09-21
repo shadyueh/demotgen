@@ -3,6 +3,12 @@
 import { Label, TextInput, FileInput, Button, DarkThemeToggle } from "flowbite-react";
 import Image from "next/image";
 import { useState } from 'react';
+import localFont from 'next/font/local';
+
+const baskervvilleSC = localFont({
+  src: '../fonts/BaskervvilleSC-Regular.ttf',
+  display: 'auto',
+})
 
 export default function Home() {
 
@@ -51,7 +57,7 @@ export default function Home() {
 
         <div id="result" className="min-w-full h-full flex justify-center">
           <div className="flex flex-col w-[800px]  h-[600px] bg-black items-center">
-            <h1 className="my-6 text-base font-semibold text-gray-900 dark:text-white">
+            <h1 className={`my-6 text-base font-semibold text-gray-900 dark:text-white ${baskervvilleSC.className}`}>
               {formatTitle(posterTitle)}
             </h1>
             <div className="border-2 border-white p-1">
