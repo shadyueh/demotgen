@@ -54,7 +54,9 @@ export default function Home() {
             <h1 className="my-6 text-base font-semibold text-gray-900 dark:text-white">
               {formatTitle(posterTitle)}
             </h1>
-            <Image src={imageFile} width={640} height={480} alt="image" />
+            <div className="border-2 border-white p-1">
+              <Image src={imageFile} width={640} height={480} alt="image" />
+            </div>
             <p>{posterCaption}</p>
           </div>
         </div>
