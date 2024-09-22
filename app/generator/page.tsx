@@ -34,28 +34,25 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-dvh  dark:bg-gray-800">
       <main className="flex flex-col h-full items-center gap-2">
+        <h1 className="text-2xl dark:text-white">Generate your Demotivational Poster <DarkThemeToggle /></h1>
 
-        <DarkThemeToggle />
+        <form className="flex flex-col gap-4  min-w-[95%] sm:min-w-[960px] mx-auto p-4 border-2 border-cyan-600 rounded-lg ">
+          <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
+            <div className="w-full">
+              <Label htmlFor="base" value="Title" className="mb-2 block" />
+              <TextInput id="base" type="text" sizing="md"
+                value={posterTitle} onChange={(e) => setPosterTitle(e.target.value)} />
+            </div>
 
-        <form className="flex max-w-md flex-col gap-4">
-          <h1 className="text-2xl dark:text-white">Generate your Demotivational Poster</h1>
-          <div>
-            <div className="mb-2 block">
-              <Label htmlFor="base" value="Title" />
+            <div className="w-full">
+              <Label htmlFor="caption" value="Caption" className="mb-2 block" />
+              <TextInput id="caption" type="text" sizing="md" value={posterCaption} onChange={(e) => setPosterCaption(e.target.value)} />
             </div>
-            <TextInput id="base" type="text" sizing="md" value={posterTitle} onChange={(e) => setPosterTitle(e.target.value)} />
-          </div>
-          <div>
-            <div className="mb-2 block">
-              <Label htmlFor="caption" value="Caption" />
+
+            <div className="w-full">
+              <Label htmlFor="file-upload-helper-text" value="Upload file" className="mb-2 block" />
+              <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
             </div>
-            <TextInput id="caption" type="text" sizing="md" value={posterCaption} onChange={(e) => setPosterCaption(e.target.value)} />
-          </div>
-          <div>
-            <div>
-              <Label htmlFor="file-upload-helper-text" value="Upload file" />
-            </div>
-            <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
           </div>
           <Button outline gradientDuoTone="greenToBlue" >Generate!</Button>
         </form>
