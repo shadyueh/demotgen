@@ -6,12 +6,12 @@ import { useState } from 'react';
 import localFont from 'next/font/local';
 
 const timesNewRoman = localFont({
-  src: '../fonts/times-new-roman.ttf',
+  src: '../fonts/times-new-roman.woff',
   display: 'auto',
 })
 
 const centuryGothic = localFont({
-  src: '../fonts/century-gothic.ttf',
+  src: '../fonts/century-gothic.woff',
   display: 'auto',
 })
 
@@ -61,9 +61,12 @@ export default function Home() {
         </form>
 
         <div id="result" className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
-          <div className="border-2 border-white w-3/4 h-[55%]" style={{ position: 'relative' }}>
-            <Image src={imageFile} alt="image" fill
-              style={{ objectFit: 'cover' }} />
+
+          <div className="border-2 border-white w-3/4 h-[55%]">
+            <div className="border-4 border-transparent w-full h-full" style={{ position: 'relative' }}>
+              <Image src={imageFile} alt="image" fill
+                style={{ objectFit: 'cover' }} />
+            </div>
           </div>
           <div className="flex flex-col h-auto justify-around items-center">
             <h1 className={`m-4 text-base text-gray-900 dark:text-white ${timesNewRoman.className}`}>
