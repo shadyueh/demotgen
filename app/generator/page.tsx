@@ -17,9 +17,9 @@ const centuryGothic = localFont({
 
 export default function Home() {
 
-  const [imageFile, setImageFile] = useState("/images/pexels-alohaphotostudio-5901269.jpg")
+  const [imageFile, setImageFile] = useState("/images/pexels-chetanvlad-1529360.jpg")
   const [posterTitle, setPosterTitle] = useState("Irresponsabilidade")
-  const [posterCaption, setPosterCaption] = useState("Nenhuma gota d'água se sente responsável pela inundação")
+  const [posterCaption, setPosterCaption] = useState("Nenhuma Gota de Chuva Acredita ser a Culpada pela Inundação")
 
   const formatTitle = (title: string) => {
     return (
@@ -29,6 +29,27 @@ export default function Home() {
         <span className="inline-block align-top text-6xl tracking-wider leading-[3.5rem] uppercase">{title.substring(title.length - 1)}</span>
       </>
     )
+  }
+
+  const formatCaption = (s: string) => {
+
+    const uppercaseRegex = /\p{Lu}/u
+
+    const formattedString = s.split('').reduce((acc, char) => {
+      // Create a span only if the character is uppercase
+      if (uppercaseRegex.test(char)) {
+        acc.push(
+          <span className="text-2xl">
+            {char.toUpperCase()}
+          </span>
+        );
+      } else {
+        acc.push(char.toUpperCase());
+      }
+      return acc
+    }, [] as (string | JSX.Element)[])
+
+    return formattedString
   }
 
   return (
@@ -69,7 +90,7 @@ export default function Home() {
             <h1 className={`m-4 text-base text-gray-900 dark:text-white ${timesNewRoman.className}`}>
               {formatTitle(posterTitle)}
             </h1>
-            <p className={`uppercase ${centuryGothic.className}`}>{posterCaption}</p>
+            <p className={`uppercase ${centuryGothic.className}`}>{formatCaption(posterCaption)}</p>
           </div>
         </div>
       </main>
