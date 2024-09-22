@@ -21,6 +21,7 @@ export default function Home() {
   const [posterTitle, setPosterTitle] = useState("Irresponsabilidade")
   const [posterCaption, setPosterCaption] = useState("Nenhuma Gota de Chuva Acredita ser a Culpada pela Inundação")
 
+  // formata titulo do poster
   const formatTitle = (title: string) => {
     return (
       <>
@@ -31,20 +32,25 @@ export default function Home() {
     )
   }
 
+  // formata caption do poster
   const formatCaption = (s: string) => {
 
     const uppercaseRegex = /\p{Lu}/u
 
     const formattedString = s.split('').reduce((acc, char) => {
-      // Create a span only if the character is uppercase
+      
       if (uppercaseRegex.test(char)) {
-        acc.push(
-          <span className="text-2xl">
-            {char.toUpperCase()}
-          </span>
-        );
+          // Add the uppercase char in a span with a larger font
+          acc.push(<span className="text-2xl">{char}</span>);
       } else {
-        acc.push(char.toUpperCase());
+        // If it's a lowercase character, accumulate it
+        if (typeof acc[acc.length - 1] === 'string') {
+          // Add to the existing string
+          acc[acc.length - 1] += char; 
+        } else {
+          // Create a new string entry
+          acc.push(char); 
+        }
       }
       return acc
     }, [] as (string | JSX.Element)[])
@@ -78,7 +84,7 @@ export default function Home() {
           <Button outline gradientDuoTone="greenToBlue" >Generate!</Button>
         </form>
 
-        <div id="result" className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
+        <div id="poster" className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
 
           <div className="border-2 border-white w-[732px] h-[417px]">
             <div className="border-4 border-transparent w-full h-full" style={{ position: 'relative' }}>
@@ -86,7 +92,8 @@ export default function Home() {
                 style={{ objectFit: 'cover' }} />
             </div>
           </div>
-          <div className="flex flex-col h-auto justify-around items-center">
+
+          <div className="flex flex-col sm:max-w-[720px] max-h-[184px] justify-around items-center overflow-hidden">
             <h1 className={`m-4 text-base text-gray-900 dark:text-white ${timesNewRoman.className}`}>
               {formatTitle(posterTitle)}
             </h1>
