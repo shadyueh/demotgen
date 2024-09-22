@@ -5,8 +5,13 @@ import Image from "next/image";
 import { useState } from 'react';
 import localFont from 'next/font/local';
 
-const baskervvilleSC = localFont({
-  src: '../fonts/BaskervvilleSC-Regular.ttf',
+const timesNewRoman = localFont({
+  src: '../fonts/times-new-roman.ttf',
+  display: 'auto',
+})
+
+const centuryGothic = localFont({
+  src: '../fonts/century-gothic.ttf',
   display: 'auto',
 })
 
@@ -19,16 +24,16 @@ export default function Home() {
   const formatTitle = (title: string) => {
     return (
       <>
-        <span className="inline-block align-top text-2xl leading-7 uppercase">{title.substring(0, 1)}</span>
-        <span className="inline-block align-top underline underline-offset-2 uppercase">{title.substring(1, title.length - 1)}</span>
-        <span className="inline-block align-top text-2xl leading-7 uppercase">{title.substring(title.length - 1)}</span>
+        <span className="inline-block align-top text-6xl tracking-wider leading-[3.5rem] uppercase">{title.substring(0, 1)}</span>
+        <span className="inline-block align-top text-5xl tracking-wider underline underline-offset-4 decoration-2 uppercase">{title.substring(1, title.length - 1)}</span>
+        <span className="inline-block align-top text-6xl tracking-wider leading-[3.5rem] uppercase">{title.substring(title.length - 1)}</span>
       </>
     )
   }
 
   return (
-    <div className="flex flex-col h-dvh">
-      <main className="flex flex-col h-full items-center gap-2 dark:bg-gray-800">
+    <div className="flex flex-col min-h-dvh  dark:bg-gray-800">
+      <main className="flex flex-col h-full items-center gap-2">
 
         <DarkThemeToggle />
 
@@ -55,15 +60,16 @@ export default function Home() {
           <Button outline gradientDuoTone="greenToBlue" >Generate!</Button>
         </form>
 
-        <div id="result" className="min-w-full h-full flex justify-center">
-          <div className="flex flex-col w-[800px]  h-[600px] bg-black items-center">
-            <h1 className={`my-6 text-base font-semibold text-gray-900 dark:text-white ${baskervvilleSC.className}`}>
+        <div id="result" className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
+          <div className="border-2 border-white w-3/4 h-[55%]" style={{ position: 'relative' }}>
+            <Image src={imageFile} alt="image" fill
+              style={{ objectFit: 'cover' }} />
+          </div>
+          <div className="flex flex-col h-auto justify-around items-center">
+            <h1 className={`m-4 text-base text-gray-900 dark:text-white ${timesNewRoman.className}`}>
               {formatTitle(posterTitle)}
             </h1>
-            <div className="border-2 border-white p-1">
-              <Image src={imageFile} width={640} height={480} alt="image" />
-            </div>
-            <p>{posterCaption}</p>
+            <p className={`uppercase ${centuryGothic.className}`}>{posterCaption}</p>
           </div>
         </div>
       </main>
