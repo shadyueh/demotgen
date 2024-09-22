@@ -62,7 +62,7 @@ export default function Home() {
 
         <div id="result" className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
 
-          <div className="border-2 border-white w-3/4 h-[55%]">
+          <div className="border-2 border-white w-[732px] h-[417px]">
             <div className="border-4 border-transparent w-full h-full" style={{ position: 'relative' }}>
               <Image src={imageFile} alt="image" fill
                 style={{ objectFit: 'cover' }} />
