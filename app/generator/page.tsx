@@ -56,27 +56,28 @@ export default function DemotivationalPoster() {
         <h1 className="text-2xl dark:text-white">Generate your Demotivational Poster <DarkThemeToggle /></h1>
 
         <form className="flex flex-col gap-4  min-w-[95%] sm:min-w-[960px] mx-auto p-4 border-2 border-cyan-600 rounded-lg ">
-          <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
+          <div className="grid gap-4 sm:grid-cols-3">
+
             <div className="w-full">
               <Label htmlFor="base" value="Title" className="mb-2 block" />
               <TextInput id="base" type="text" sizing="md"
                 value={posterTitle} onChange={(e) => setPosterTitle(e.target.value)} />
             </div>
 
-            <div className="w-full">
+            <div className="sm:col-span-2">
+              <Label htmlFor="file-upload-helper-text" value="Upload image" className="mb-2 block" />
+              <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
+            </div>
+
+            <div className="sm:col-span-3">
               <Label htmlFor="caption" value="Caption" className="mb-2 block" />
               <TextInput id="caption" type="text" sizing="md" value={posterCaption} onChange={(e) => setPosterCaption(e.target.value)} />
             </div>
 
-            <div className="w-full">
-              <Label htmlFor="file-upload-helper-text" value="Upload file" className="mb-2 block" />
-              <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
-            </div>
           </div>
-          <Button outline gradientDuoTone="greenToBlue" onClick={handleDownloadImage}>Download as Image</Button>
         </form>
 
-        <div ref={printRef} className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
+        <div ref={printRef} className="flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
 
           <div className="border-2 border-white w-[732px] h-[417px]">
             <div className="border-4 border-transparent w-full h-full" style={{ position: 'relative' }}>
@@ -92,6 +93,9 @@ export default function DemotivationalPoster() {
             <p className={`text-2xl text-center ${centuryGothic.className}`} style={{ fontVariantCaps: "small-caps" }}>{posterCaption}</p>
           </div>
         </div>
+
+        <Button outline gradientDuoTone="greenToBlue" onClick={handleDownloadImage} className="m-8">Download as Image</Button>
+
       </main>
     </div>
   );
