@@ -4,6 +4,7 @@ import { Label, TextInput, FileInput, Button, DarkThemeToggle } from "flowbite-r
 import Image from "next/image";
 import { useRef, useState } from 'react';
 import localFont from 'next/font/local';
+import * as htmlToImage from 'html-to-image';
 
 const timesNewRoman = localFont({
   src: '../fonts/times-new-roman.woff',
@@ -33,7 +34,21 @@ export default function DemotivationalPoster() {
     )
   }
 
-  const handleDownloadImage = () => {}
+  const handleDownloadImage = async () => {
+    const element = printRef.current as HTMLElement
+    const link = document.createElement('a');
+    const dataUrl = await htmlToImage.toPng(element)
+
+    if (typeof link.download === 'string') {
+      link.href = dataUrl;
+      link.download = 'downloaded-demotivational-poster.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.open(dataUrl);
+    }
+  }
 
   return (
     <div className="flex flex-col min-h-dvh  dark:bg-gray-800">
@@ -74,7 +89,7 @@ export default function DemotivationalPoster() {
             <h1 className={`m-4 text-base text-gray-900 dark:text-white ${timesNewRoman.className}`}>
               {formatTitle(posterTitle)}
             </h1>
-            <p className={`text-2xl ${centuryGothic.className}`} style={{fontVariantCaps:"small-caps"}}>{posterCaption}</p>
+            <p className={`text-2xl text-center ${centuryGothic.className}`} style={{ fontVariantCaps: "small-caps" }}>{posterCaption}</p>
           </div>
         </div>
       </main>
