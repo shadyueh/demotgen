@@ -4,6 +4,7 @@ import { Label, TextInput, FileInput, Button, DarkThemeToggle } from "flowbite-r
 import Image from "next/image";
 import { useRef, useState } from 'react';
 import localFont from 'next/font/local';
+import html2canvas from "html2canvas";
 
 const timesNewRoman = localFont({
   src: '../fonts/times-new-roman.woff',
@@ -33,7 +34,23 @@ export default function DemotivationalPoster() {
     )
   }
 
-  const handleDownloadImage = () => {}
+  const handleDownloadImage = async () => {
+    const element = printRef.current as HTMLElement
+    const canvas = await html2canvas(element)
+    const data = canvas.toDataURL('image/jpg')
+    const link = document.createElement('a');
+
+    if (typeof link.download === 'string') {
+      link.href = data;
+      link.download = 'downloaded-demotivational-poster.jpg';
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.open(data);
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-dvh  dark:bg-gray-800">
@@ -57,8 +74,8 @@ export default function DemotivationalPoster() {
               <Label htmlFor="file-upload-helper-text" value="Upload file" className="mb-2 block" />
               <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
             </div>
+            <Button outline gradientDuoTone="greenToBlue" onClick={handleDownloadImage}>Download as Image</Button>
           </div>
-          <Button outline gradientDuoTone="greenToBlue" onClick={handleDownloadImage}>Download as Image</Button>
         </form>
 
         <div ref={printRef} className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
