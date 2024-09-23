@@ -32,32 +32,6 @@ export default function Home() {
     )
   }
 
-  // formata caption do poster
-  const formatCaption = (s: string) => {
-
-    const uppercaseRegex = /\p{Lu}/u
-
-    const formattedString = s.split('').reduce((acc, char) => {
-      
-      if (uppercaseRegex.test(char)) {
-          // Add the uppercase char in a span with a larger font
-          acc.push(<span className="text-2xl">{char}</span>);
-      } else {
-        // If it's a lowercase character, accumulate it
-        if (typeof acc[acc.length - 1] === 'string') {
-          // Add to the existing string
-          acc[acc.length - 1] += char; 
-        } else {
-          // Create a new string entry
-          acc.push(char); 
-        }
-      }
-      return acc
-    }, [] as (string | JSX.Element)[])
-
-    return formattedString
-  }
-
   return (
     <div className="flex flex-col min-h-dvh  dark:bg-gray-800">
       <main className="flex flex-col h-full items-center gap-2">
@@ -97,7 +71,7 @@ export default function Home() {
             <h1 className={`m-4 text-base text-gray-900 dark:text-white ${timesNewRoman.className}`}>
               {formatTitle(posterTitle)}
             </h1>
-            <p className={`uppercase ${centuryGothic.className}`}>{formatCaption(posterCaption)}</p>
+            <p className={`text-2xl ${centuryGothic.className}`} style={{fontVariantCaps:"small-caps"}}>{posterCaption}</p>
           </div>
         </div>
       </main>
