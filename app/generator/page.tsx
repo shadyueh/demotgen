@@ -2,7 +2,7 @@
 
 import { Label, TextInput, FileInput, Button, DarkThemeToggle } from "flowbite-react";
 import Image from "next/image";
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import localFont from 'next/font/local';
 
 const timesNewRoman = localFont({
@@ -15,11 +15,12 @@ const centuryGothic = localFont({
   display: 'auto',
 })
 
-export default function Home() {
+export default function DemotivationalPoster() {
 
   const [imageFile, setImageFile] = useState("/images/pexels-chetanvlad-1529360.jpg")
   const [posterTitle, setPosterTitle] = useState("Irresponsabilidade")
   const [posterCaption, setPosterCaption] = useState("Nenhuma Gota de Chuva Acredita ser a Culpada pela Inundação")
+  const printRef = useRef<HTMLDivElement>(null);
 
   // formata titulo do poster
   const formatTitle = (title: string) => {
@@ -58,7 +59,7 @@ export default function Home() {
           <Button outline gradientDuoTone="greenToBlue" >Generate!</Button>
         </form>
 
-        <div id="poster" className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
+        <div ref={printRef} className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
 
           <div className="border-2 border-white w-[732px] h-[417px]">
             <div className="border-4 border-transparent w-full h-full" style={{ position: 'relative' }}>
