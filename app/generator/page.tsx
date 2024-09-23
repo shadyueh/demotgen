@@ -33,6 +33,8 @@ export default function DemotivationalPoster() {
     )
   }
 
+  const handleDownloadImage = () => {}
+
   return (
     <div className="flex flex-col min-h-dvh  dark:bg-gray-800">
       <main className="flex flex-col h-full items-center gap-2">
@@ -56,7 +58,7 @@ export default function DemotivationalPoster() {
               <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
             </div>
           </div>
-          <Button outline gradientDuoTone="greenToBlue" >Generate!</Button>
+          <Button outline gradientDuoTone="greenToBlue" onClick={handleDownloadImage}>Download as Image</Button>
         </form>
 
         <div ref={printRef} className="mb-8 flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
