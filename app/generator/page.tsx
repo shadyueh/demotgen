@@ -1,11 +1,12 @@
 "use client"
 
-import { Label, TextInput, FileInput, Button, DarkThemeToggle } from "flowbite-react";
+import { Label, TextInput, FileInput, Button } from "flowbite-react";
 import Image from "next/image";
 import { ChangeEvent, useRef, useState } from 'react';
 import localFont from 'next/font/local';
 import * as htmlToImage from 'html-to-image';
 import ColorPicker from '@/components/ColorPicker';
+import Header from "@/components/Header";
 
 const timesNewRoman = localFont({
   src: '../fonts/times-new-roman.woff',
@@ -70,10 +71,11 @@ export default function DemotivationalPoster() {
 
   return (
     <div className="flex flex-col min-h-dvh bg-white dark:bg-gray-800">
+      <Header />
       <main className="flex flex-col h-full items-center gap-2">
-        <h1 className="text-2xl text-gray-500 dark:text-white">Generate your Demotivational Poster <DarkThemeToggle /></h1>
+        <h1 className="text-2xl text-gray-500 dark:text-white mt-8">Generate your Demotivational Poster</h1>
 
-        <form className="flex flex-col gap-4  min-w-[95%] sm:min-w-[960px] mx-auto p-4 border-2 border-cyan-600 rounded-lg ">
+        <form className="flex flex-col gap-4  min-w-[95%] sm:min-w-[960px] mx-auto my-8 p-4">
           <div className="grid gap-4 sm:grid-cols-10">
 
             <div className="sm:col-span-4">
