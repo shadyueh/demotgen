@@ -2,7 +2,7 @@
 
 import { Label, TextInput, FileInput, Button, DarkThemeToggle } from "flowbite-react";
 import Image from "next/image";
-import { useRef, useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import localFont from 'next/font/local';
 import * as htmlToImage from 'html-to-image';
 import ColorPicker from '@/components/ColorPicker';
@@ -57,6 +57,17 @@ export default function DemotivationalPoster() {
     }
   }
 
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]; // Get the first file
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImageFile(reader.result as string); // Set the image source in the state
+      };
+      reader.readAsDataURL(file); // Read the file as a Data URL
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-dvh bg-white dark:bg-gray-800">
       <main className="flex flex-col h-full items-center gap-2">
@@ -78,7 +89,7 @@ export default function DemotivationalPoster() {
 
             <div className="sm:col-span-5">
               <Label htmlFor="file-upload-helper-text" value="Upload image" className="mb-2 block" />
-              <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
+              <FileInput id="file-upload-helper-text" accept="image/*" onChange={handleImageChange} helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
             </div>
 
             <div className="sm:col-span-10">
