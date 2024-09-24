@@ -28,7 +28,7 @@ export default function DemotivationalPoster() {
     return (
       <>
         <span className="inline-block align-top text-6xl tracking-wider leading-[3.5rem] uppercase">{title.substring(0, 1)}</span>
-        <span className="inline-block align-top text-5xl tracking-wider underline underline-offset-4 decoration-2 uppercase">{title.substring(1, title.length - 1)}</span>
+        <span className="inline-block align-top text-5xl tracking-wider border-b-2 uppercase">{title.substring(1, title.length - 1)}</span>
         <span className="inline-block align-top text-6xl tracking-wider leading-[3.5rem] uppercase">{title.substring(title.length - 1)}</span>
       </>
     )
