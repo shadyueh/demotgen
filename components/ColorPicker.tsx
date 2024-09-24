@@ -31,7 +31,7 @@ const ColorPicker = ({ onChange, defaultColor }: ColorPickerProps) => {
   return (
     <div className="relative">
       <div
-        className={`w-10 h-10 border-2 border-gray-300 dark:border-gray-600 
+        className={`w-full sm:w-10 h-10 border-2 border-gray-300 dark:border-gray-600 
         rounded-full cursor-pointer transition-all duration-300 
         ${ isFocused ? 'ring-2 ring-cyan-500' : ''}`}
         style={{ backgroundColor: color }}
@@ -44,7 +44,7 @@ const ColorPicker = ({ onChange, defaultColor }: ColorPickerProps) => {
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className="absolute inset-0 opacity-0 w-10 h-10 cursor-pointer"
+          className="absolute inset-0 opacity-0 w-full h-full sm:w-10 sm:h-10 cursor-pointer"
           style={{ backgroundColor: color }}
         />
       </div>
