@@ -15,8 +15,8 @@ export default function Home() {
 
   return (
     <div className="flex flex-col h-dvh">
-      <main className="flex flex-col h-full items-center justify-center gap-2 dark:bg-gray-800">
-        <h1 className="text-2xl dark:text-white">Flowbite React + Next.js <DarkThemeToggle /></h1>
+      <main className="flex flex-col h-full items-center justify-center gap-2 bg-white dark:bg-gray-800">
+        <h1 className="text-2xl text-gray-500 dark:text-white">Flowbite React + Next.js <DarkThemeToggle /></h1>
         <Button outline gradientDuoTone="greenToBlue" onClick={goToGenerator}>Flow</Button>
       </main>
       <footer className="w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">

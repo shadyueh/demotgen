@@ -51,9 +51,9 @@ export default function DemotivationalPoster() {
   }
 
   return (
-    <div className="flex flex-col min-h-dvh  dark:bg-gray-800">
+    <div className="flex flex-col min-h-dvh bg-white dark:bg-gray-800">
       <main className="flex flex-col h-full items-center gap-2">
-        <h1 className="text-2xl dark:text-white">Generate your Demotivational Poster <DarkThemeToggle /></h1>
+        <h1 className="text-2xl text-gray-500 dark:text-white">Generate your Demotivational Poster <DarkThemeToggle /></h1>
 
         <form className="flex flex-col gap-4  min-w-[95%] sm:min-w-[960px] mx-auto p-4 border-2 border-cyan-600 rounded-lg ">
           <div className="grid gap-4 sm:grid-cols-3">
