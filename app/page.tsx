@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation'
 import { Button } from "flowbite-react";
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from '@/components/TheHeader';
+import TheFooter from '@/components/TheFooter';
 import CardGallery from "@/components/CardGallery";
 
 export default function Home() {
@@ -47,7 +47,7 @@ export default function Home() {
         <CardGallery cards={cardsData} />
       </main>
 
-      <Footer />
+      <TheFooter />
       
     </div>
   );

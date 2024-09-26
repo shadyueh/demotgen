@@ -6,7 +6,7 @@ import { ChangeEvent, useRef, useState } from 'react';
 import localFont from 'next/font/local';
 import * as htmlToImage from 'html-to-image';
 import ColorPicker from '@/components/ColorPicker';
-import Header from "@/components/Header";
+import TheHeader from "@/components/TheHeader";
 
 const timesNewRoman = localFont({
   src: '../fonts/times-new-roman.woff',
@@ -71,7 +71,7 @@ export default function DemotivationalPoster() {
 
   return (
     <div className="flex flex-col min-h-dvh bg-white dark:bg-gray-800">
-      <Header />
+      <TheHeader />
       <main className="flex flex-col h-full items-center gap-2">
         <h1 className="text-2xl text-gray-500 dark:text-white mt-8">Generate your Demotivational Poster</h1>
 

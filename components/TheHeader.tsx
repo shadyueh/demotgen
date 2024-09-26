@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Navbar, DarkThemeToggle } from "flowbite-react";
 
-export default function Header() {
+export default function TheHeader() {
   return (
     <header>
       <Navbar fluid className="border-b border-gray-200">
