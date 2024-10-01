@@ -7,7 +7,7 @@ interface ColorPickerProps {
 
 const ColorPicker = ({ onChange, defaultColor }: ColorPickerProps) => {
   // default color
-  const defColor = defaultColor ? defaultColor : '#ffffff'
+  const defColor = defaultColor ?? '#ffffff'
   const [color, setColor] = useState(defColor)
   const [isFocused, setIsFocused] = useState<boolean>(false); // Track focus state
   const inputRef = useRef<HTMLInputElement>(null); // Reference to the color input
