@@ -1,18 +1,10 @@
 "use client"
 
-import { useRouter } from 'next/navigation'
-import { Button } from "flowbite-react";
 import Header from '@/components/TheHeader';
 import TheFooter from '@/components/TheFooter';
 import CardGallery from "@/components/CardGallery";
 
 export default function Home() {
-
-  const router = useRouter()
-
-  const goToGenerator = () => {
-    router.push("/generator")
-  }
 
   const cardsData = [
     {
@@ -42,8 +34,6 @@ export default function Home() {
       <Header />
 
       <main className="flex flex-col h-full items-center justify-center gap-2 bg-white dark:bg-gray-800">
-        <h1 className="text-2xl text-gray-500 dark:text-white">Flowbite React + Next.js</h1>
-        <Button outline gradientDuoTone="greenToBlue" onClick={goToGenerator}>Flow</Button>
         <CardGallery cards={cardsData} />
       </main>
 
