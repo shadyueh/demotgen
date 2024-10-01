@@ -26,6 +26,7 @@ export default function DemotivationalPoster() {
   const printRef = useRef<HTMLDivElement>(null);
   const initialColor = '#ffffff'
   const [selectedColor, setSelectedColor] = useState<string>(initialColor);
+  const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
   // formata titulo do poster
   const formatTitle = (title: string) => {
@@ -105,7 +106,7 @@ export default function DemotivationalPoster() {
         <div ref={printRef} className="flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
           <div className="border-2 w-[732px] h-[417px]" style={{ borderColor: selectedColor }}>
             <div className="border-4 border-transparent w-full h-full" style={{ position: 'relative' }}>
-              <Image src={imageFile} alt="image" fill
+              <Image src={`${BASE_PATH}`+imageFile} alt="image" fill
                 style={{ objectFit: 'cover' }} />
             </div>
           </div>
