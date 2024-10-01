@@ -72,8 +72,11 @@ export default function DemotivationalPoster() {
 
   return (
     <div className="flex flex-col min-h-dvh bg-white dark:bg-gray-800">
+
       <TheHeader />
+      
       <main className="flex flex-col h-full items-center gap-2">
+      
         <h1 className="text-2xl text-gray-500 dark:text-white mt-8">Generate your Demotivational Poster</h1>
 
         <form className="flex flex-col gap-4  min-w-[95%] sm:min-w-[960px] mx-auto my-8 p-4">
@@ -106,7 +109,7 @@ export default function DemotivationalPoster() {
         <div ref={printRef} className="flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
           <div className="border-2 w-[732px] h-[417px]" style={{ borderColor: selectedColor }}>
             <div className="border-4 border-transparent w-full h-full" style={{ position: 'relative' }}>
-              <Image src={`${BASE_PATH}`+imageFile} alt="image" fill
+              <Image src={`${BASE_PATH}`+imageFile} alt="image" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 style={{ objectFit: 'cover' }} />
             </div>
           </div>
