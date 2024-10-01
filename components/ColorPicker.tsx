@@ -1,11 +1,12 @@
 import React, { ChangeEvent, useRef, useState } from 'react';
 
 interface ColorPickerProps {
+  id: string;
   defaultColor?: string;
   onChange?: (color: string) => void; // optional callback prop
 }
 
-const ColorPicker = ({ onChange, defaultColor }: ColorPickerProps) => {
+const ColorPicker = ({ id, onChange, defaultColor }: ColorPickerProps) => {
   // default color
   const defColor = defaultColor ?? '#ffffff'
   const [color, setColor] = useState(defColor)
@@ -38,6 +39,7 @@ const ColorPicker = ({ onChange, defaultColor }: ColorPickerProps) => {
         onClick={() => inputRef.current?.focus()} 
       >
         <input
+          id={id}
           ref={inputRef}
           type="color"
           value={color}

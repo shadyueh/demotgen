@@ -86,7 +86,7 @@ export default function DemotivationalPoster() {
 
             <div className="">
               <Label htmlFor="color-picker" value="Color" className="mb-2 block" />
-              <ColorPicker defaultColor={initialColor} onChange={handleColorChange} />
+              <ColorPicker id="color-picker" defaultColor={initialColor} onChange={handleColorChange} />
             </div>
 
             <div className="sm:col-span-5">
