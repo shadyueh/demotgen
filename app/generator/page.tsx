@@ -20,13 +20,13 @@ const centuryGothic = localFont({
 
 export default function DemotivationalPoster() {
 
-  const [imageFile, setImageFile] = useState("/images/pexels-chetanvlad-1529360.jpg")
+  const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+  const [imageFile, setImageFile] = useState(`${BASE_PATH}/images/pexels-chetanvlad-1529360.jpg`)
   const [posterTitle, setPosterTitle] = useState("Irresponsabilidade")
   const [posterCaption, setPosterCaption] = useState("Nenhuma Gota de Chuva Acredita ser a Culpada pela Inundação")
   const printRef = useRef<HTMLDivElement>(null);
   const initialColor = '#ffffff'
   const [selectedColor, setSelectedColor] = useState<string>(initialColor);
-  const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
   // formata titulo do poster
   const formatTitle = (title: string) => {
@@ -109,7 +109,7 @@ export default function DemotivationalPoster() {
         <div ref={printRef} className="flex flex-col justify-center items-center w-[960px] h-[720px] bg-black">
           <div className="border-2 w-[732px] h-[417px]" style={{ borderColor: selectedColor }}>
             <div className="border-4 border-transparent w-full h-full" style={{ position: 'relative' }}>
-              <Image src={`${BASE_PATH}`+imageFile} alt="image" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              <Image src={imageFile} alt="image" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 style={{ objectFit: 'cover' }} />
             </div>
           </div>
