@@ -1,6 +1,6 @@
-import Link from "next/link";
+import { DarkThemeToggle, Navbar,  } from "flowbite-react";
 import Image from "next/image";
-import { Navbar, DarkThemeToggle } from "flowbite-react";
+import Link from "next/link";
 
 export default function TheHeader() {
 
