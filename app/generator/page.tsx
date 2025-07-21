@@ -2,7 +2,8 @@
 
 import { Label, TextInput, FileInput, Button } from "flowbite-react";
 import Image from "next/image";
-import { ChangeEvent, useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
+import type { ChangeEvent } from 'react';
 import localFont from 'next/font/local';
 import * as htmlToImage from 'html-to-image';
 import ColorPicker from '@/components/ColorPicker';
@@ -70,6 +71,9 @@ export default function DemotivationalPoster() {
     }
   };
 
+  const titleInputId = useId();
+  const colorPickerId = useId();
+
   return (
     <div className="flex flex-col min-h-dvh bg-white dark:bg-gray-800">
 
@@ -83,24 +87,24 @@ export default function DemotivationalPoster() {
           <div className="grid gap-4 sm:grid-cols-10">
 
             <div className="sm:col-span-4">
-              <Label htmlFor="base" value="Title" className="mb-2 block" />
-              <TextInput id="base" type="text" sizing="md"
+              <Label htmlFor={titleInputId} value="Title" className="mb-2 block" />
+              <TextInput id={titleInputId} type="text" sizing="md"
                 value={posterTitle} onChange={(e) => setPosterTitle(e.target.value)} />
             </div>
 
             <div className="">
-              <Label htmlFor="color-picker" value="Color" className="mb-2 block" />
-              <ColorPicker id="color-picker" defaultColor={initialColor} onChange={handleColorChange} />
+              <ColorPicker id={colorPickerId} defaultColor={initialColor} onChange={handleColorChange} />
+              <ColorPicker id={useId()} defaultColor={initialColor} onChange={handleColorChange} />
             </div>
 
             <div className="sm:col-span-5">
               <Label htmlFor="file-upload-helper-text" value="Upload image" className="mb-2 block" />
-              <FileInput id="file-upload-helper-text" accept="image/*" onChange={handleImageChange} helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
+              <FileInput id={useId()} accept="image/*" onChange={handleImageChange} helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
             </div>
 
             <div className="sm:col-span-10">
               <Label htmlFor="caption" value="Caption" className="mb-2 block" />
-              <TextInput id="caption" type="text" sizing="md" value={posterCaption} onChange={(e) => setPosterCaption(e.target.value)} />
+              <TextInput id={useId()} type="text" sizing="md" value={posterCaption} onChange={(e) => setPosterCaption(e.target.value)} />
             </div>
 
           </div>
