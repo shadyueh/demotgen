@@ -1,4 +1,5 @@
-import React, { ChangeEvent, useRef, useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { useRef, useState } from 'react';
 
 interface ColorPickerProps {
   id: string;
@@ -31,12 +32,20 @@ const ColorPicker = ({ id, onChange, defaultColor }: ColorPickerProps) => {
 
   return (
     <div className="relative">
-      <div
+      <button
+        type="button"
+        aria-label="Pick a color"
         className={`w-full sm:w-10 h-10 border-2 border-gray-300 dark:border-gray-600 
         rounded-full cursor-pointer transition-all duration-300 
         ${ isFocused ? 'ring-2 ring-cyan-500' : ''}`}
         style={{ backgroundColor: color }}
-        onClick={() => inputRef.current?.focus()} 
+        onClick={() => inputRef.current?.focus()}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            inputRef.current?.focus();
+            e.preventDefault();
+          }
+        }}
       >
         <input
           id={id}
@@ -49,7 +58,7 @@ const ColorPicker = ({ id, onChange, defaultColor }: ColorPickerProps) => {
           className="absolute inset-0 opacity-0 w-full h-full sm:w-10 sm:h-10 cursor-pointer"
           style={{ backgroundColor: color }}
         />
-      </div>
+      </button>
     </div>
   );
 }
